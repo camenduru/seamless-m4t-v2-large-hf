@@ -1,0 +1,21 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnType": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "black-formatter.args": [
+        "--line-length=119"
+    ],
+    "isort.args": ["--profile", "black"],
+    "flake8.args": [
+        "--max-line-length=119"
+    ],
+    "ruff.args": [
+        "--line-length=119"
+    ],
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true
+}
