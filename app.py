@@ -218,7 +218,6 @@ with gr.Blocks() as demo_s2tt:
         inputs=[input_audio, source_language, target_language],
         outputs=output_text,
         fn=run_s2tt,
-        cache_examples=CACHE_EXAMPLES,
         api_name=False,
     )
 
