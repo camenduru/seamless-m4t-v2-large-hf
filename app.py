@@ -21,20 +21,17 @@ from lang_list import (
     TEXT_SOURCE_LANGUAGE_NAMES,
 )
 
-CHECKPOINTS_PATH = pathlib.Path(os.getenv("CHECKPOINTS_PATH", "/home/user/app/models"))
-if not CHECKPOINTS_PATH.exists():
-    snapshot_download(repo_id="meta-private/M4Tv2", repo_type="model", local_dir=CHECKPOINTS_PATH)
 asset_store.env_resolvers.clear()
 asset_store.env_resolvers.append(lambda: "demo")
 demo_metadata = [
     {
         "name": "seamlessM4T_v2_large@demo",
-        "checkpoint": f"file://{CHECKPOINTS_PATH}/seamlessM4T_v2_large.pt",
-        "char_tokenizer": f"file://{CHECKPOINTS_PATH}/spm_char_lang38_tc.model",
+        "checkpoint": f"/content/models/seamlessM4T_v2_large.pt",
+        "char_tokenizer": f"/content/models/spm_char_lang38_tc.model",
     },
     {
         "name": "vocoder_v2@demo",
-        "checkpoint": f"file://{CHECKPOINTS_PATH}/vocoder_v2.pt",
+        "checkpoint": f"/content/models/vocoder_v2.pt",
     },
 ]
 asset_store.metadata_providers.append(InProcAssetMetadataProvider(demo_metadata))
@@ -47,8 +44,6 @@ translation, allowing people from different linguistic communities to communicat
 This unified model enables multiple tasks like Speech-to-Speech (S2ST), Speech-to-Text (S2TT), Text-to-Speech (T2ST)
 translation and more, without relying on multiple separate models.
 """
-
-CACHE_EXAMPLES = os.getenv("CACHE_EXAMPLES") == "1" and torch.cuda.is_available()
 
 AUDIO_SAMPLE_RATE = 16000.0
 MAX_INPUT_AUDIO_LENGTH = 60  # in seconds
@@ -184,7 +179,6 @@ with gr.Blocks() as demo_s2st:
         inputs=[input_audio, source_language, target_language],
         outputs=[output_audio, output_text],
         fn=run_s2st,
-        cache_examples=CACHE_EXAMPLES,
         api_name=False,
     )
 
