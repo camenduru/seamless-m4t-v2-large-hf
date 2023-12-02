@@ -394,11 +394,6 @@ with gr.Blocks() as demo_asr:
 
 with gr.Blocks(css="style.css") as demo:
     gr.Markdown(DESCRIPTION)
-    gr.DuplicateButton(
-        value="Duplicate Space for private use",
-        elem_id="duplicate-button",
-        visible=os.getenv("SHOW_DUPLICATE_BUTTON") == "1",
-    )
 
     with gr.Tabs():
         with gr.Tab(label="S2ST"):
@@ -412,6 +407,5 @@ with gr.Blocks(css="style.css") as demo:
         with gr.Tab(label="ASR"):
             demo_asr.render()
 
-
 if __name__ == "__main__":
-    demo.queue(max_size=50).launch()
+    demo.queue(max_size=50).launch(share=True)
