@@ -281,7 +281,6 @@ with gr.Blocks() as demo_t2st:
         inputs=[input_text, source_language, target_language],
         outputs=[output_audio, output_text],
         fn=run_t2st,
-        cache_examples=CACHE_EXAMPLES,
         api_name=False,
     )
 
@@ -339,7 +338,6 @@ with gr.Blocks() as demo_t2tt:
         inputs=[input_text, source_language, target_language],
         outputs=output_text,
         fn=run_t2tt,
-        cache_examples=CACHE_EXAMPLES,
         api_name=False,
     )
 
@@ -373,7 +371,6 @@ with gr.Blocks() as demo_asr:
         inputs=[input_audio, target_language],
         outputs=output_text,
         fn=run_asr,
-        cache_examples=CACHE_EXAMPLES,
         api_name=False,
     )
 
