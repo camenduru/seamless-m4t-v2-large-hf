@@ -37,7 +37,7 @@ demo_metadata = [
 asset_store.metadata_providers.append(InProcAssetMetadataProvider(demo_metadata))
 
 DESCRIPTION = """\
-# SeamlessM4T
+# SeamlessM4T v2
 
 [SeamlessM4T](https://github.com/facebookresearch/seamless_communication) is designed to provide high-quality
 translation, allowing people from different linguistic communities to communicate effortlessly through speech and text.
